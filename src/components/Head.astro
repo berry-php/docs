@@ -1,0 +1,10 @@
+---
+const { entry, head } = Astro.locals.starlightRoute;
+const isIndexPage = entry.slug === '';
+---
+
+{
+    head.map(({ tag: Tag, attrs, content }) => (
+        <Tag {...attrs} set:html={isIndexPage && Tag === 'title' ? 'berry' : content} />
+    ))
+}

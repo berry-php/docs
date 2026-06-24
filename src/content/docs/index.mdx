@@ -1,7 +1,7 @@
 ---
 title: berry
 description: No more context-switching, just build your HTML templates in PHP.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+template: splash
 hero:
   tagline: No more context-switching, just build your HTML templates in PHP.
   image:
@@ -10,31 +10,65 @@ hero:
     - text: Get Started
       link: /docs/get-started/
       icon: right-arrow
-    - text: Documentation
-      link: /docs/get-started/
+    - text: GitHub
+      link: https://github.com/berry-php/html
       icon: external
       variant: minimal
+      attrs:
+        target: _blank
+        rel: noreferrer
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
+Berry is a PHP library for composing correct HTML strings with small element builders.
+
+The goal is to make the correct thing the easy thing: escaped text, valid nesting through element composition, typed helpers for common attributes, and view code your PHP tools can actually understand.
+
+It is designed for the hypermedia-focused style that tools like <a href="https://htmx.org/" target="_blank" rel="noreferrer">HTMX</a> and <a href="https://data-star.dev/" target="_blank" rel="noreferrer">Datastar</a> push: render HTML on the server, send HTML over the wire, and let the browser update the page from that.
+
+This also works nicely with <a href="https://htmx.org/essays/locality-of-behaviour/" target="_blank" rel="noreferrer">Locality of Behaviour</a>: the markup, attributes, and server-side component that describe a piece of UI can live in one place, instead of being spread across templates, controllers, and separate JavaScript glue.
+
+```php
+use function Berry\Html\{button, div, h1};
+
+echo div()
+    ->class('card')
+    ->child(h1()->text('Hello Berry'))
+    ->child(button()
+        ->class('btn')
+        ->hxPost('/counter')
+        ->text('+1'));
+```
+
+<style is:global>{`
+    .hero + .sl-markdown-content {
+        margin-top: 0.5rem;
+    }
+
+    @media (min-width: 50rem) {
+        .hero {
+            padding-block: clamp(2.5rem, calc(1rem + 7vmin), 6rem) 1.5rem;
+        }
+    }
+`}</style>
+
 ## Next steps
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+    <Card title="Get Started" icon="right-arrow" href="/docs/get-started/">
+        Install `berry/html` and render your first correct HTML string. [Start here](/docs/get-started/).
+    </Card>
+    <Card title="Writing Components" icon="document" href="/docs/writing-components/">
+        Split your UI into plain PHP functions or component classes. [Write components](/docs/writing-components/).
+    </Card>
+    <Card title="Extensions" icon="setting" href="/docs/extensions/">
+        Add your own fluent methods, just like the HTMX integration does. [Build extensions](/docs/extensions/).
+    </Card>
+    <Card title="Static Analysis" icon="pencil" href="/docs/static-analysis/">
+        Keep more of your view code visible to <a href="https://phpstan.org/" target="_blank" rel="noreferrer">PHPStan</a> and your editor. [Use PHPStan](/docs/static-analysis/).
+    </Card>
+    <Card title="Integrations" icon="puzzle" href="/docs/integrations/overview/">
+        Use Berry with Symfony, HTMX, or your own application glue. [See integrations](/docs/integrations/overview/).
+    </Card>
 </CardGrid>
