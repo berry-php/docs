@@ -1,10 +1,10 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import catppuccin from "@catppuccin/starlight";
 
 export default defineConfig({
     site: "https://berry.atomicptr.dev",
+    compressHTML: true,
     integrations: [
         starlight({
             title: "berry",
@@ -22,6 +22,7 @@ export default defineConfig({
             components: {
                 Head: "./src/components/Head.astro",
             },
+            customCss: ["./src/styles/starlight-theme.css"],
             sidebar: [
                 {
                     label: "Get Started",
@@ -48,18 +49,6 @@ export default defineConfig({
                         { label: "HTMX", slug: "docs/integrations/htmx" },
                     ],
                 },
-            ],
-            plugins: [
-                catppuccin({
-                    dark: {
-                        flavor: "mocha",
-                        accent: "lavender",
-                    },
-                    light: {
-                        flavor: "latte",
-                        accent: "lavender",
-                    },
-                }),
             ],
         }),
     ],
