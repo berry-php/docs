@@ -25,6 +25,14 @@ Instead of writing `->attr('hx-post', '/counter')`, you can write `->hxPost('/co
 
 Read [HTMX Integration](/docs/integrations/htmx/) if you build server-rendered HTMX interfaces.
 
+## berry/alpinejs
+
+`berry/alpinejs` adds fluent methods for <a href="https://alpinejs.dev/" target="_blank" rel="noreferrer">Alpine.js</a> attributes.
+
+Instead of writing `->attr('x-on:click', 'count++')`, you can write `->xOnClick('count++')`.
+
+Read [Alpine.js Integration](/docs/integrations/alpinejs/) if you add small client-side interactions to Berry components.
+
 ## Your own integrations
 
 Berry integrations are usually just extension methods plus optional framework glue.

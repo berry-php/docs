@@ -47,6 +47,7 @@ export default defineConfig({
                         { label: "Overview", slug: "docs/integrations/overview" },
                         { label: "Symfony", slug: "docs/integrations/symfony" },
                         { label: "HTMX", slug: "docs/integrations/htmx" },
+                        { label: "Alpine.js", slug: "docs/integrations/alpinejs" },
                     ],
                 },
             ],
