@@ -132,13 +132,13 @@ This is not a promise that every possible HTML output is valid or secure. It is 
 
 ## Extension methods and stubs
 
-Dynamic extension methods are the tricky part.
+Dynamic extension methods need one extra step for static analysis.
 
-At runtime, Berry can add methods like `hxPost()` or `hxSwap()` to HTML tags. PHPStan can not know about those methods unless it gets extra metadata.
+If a package adds methods like `hxPost()` or `xData()` to Berry tags, PHPStan needs generated stubs to understand those signatures.
 
-That is what `berry/extension-method-stub-generator` is for.
+Berry uses `berry/extension-method-stub-generator` for that. Extension packages can ship a `berry-method-extensions.json` file, and the generator writes the stub files plus a `.berry/extension.neon` include.
 
-Extension packages can ship a `berry-method-extensions.json` file. The generator reads those files and writes PHPStan stubs into `.berry/stubs`, plus a `.berry/extension.neon` file.
+The full extension flow, including runtime registration and the JSON file format, is covered on the [Extensions](/docs/extensions/) page.
 
 Include it in your PHPStan config:
 
@@ -147,7 +147,7 @@ includes:
     - .berry/extension.neon
 ```
 
-The <a href="https://htmx.org/" target="_blank" rel="noreferrer">HTMX</a> integration uses this so methods like `hxPost()` are visible to static analysis.
+Packages like [`berry/htmx`](https://github.com/berry-php/htmx) and [`berry/alpinejs`](https://github.com/berry-php/alpinejs) use this so their extension methods are visible to static analysis.
 
 ## The point
 
