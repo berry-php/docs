@@ -1,6 +1,6 @@
+import starlight from "@astrojs/starlight";
 // @ts-check
 import { defineConfig } from "astro/config";
-import starlight from "@astrojs/starlight";
 
 export default defineConfig({
     site: "https://berry.atomicptr.dev",
@@ -31,23 +31,59 @@ export default defineConfig({
                 {
                     label: "Berry",
                     items: [
-                        { label: "Core Concepts", slug: "docs/core-concepts" },
-                        { label: "Writing Components", slug: "docs/writing-components" },
-                        { label: "Attributes And Content", slug: "docs/attributes-and-content" },
-                        { label: "Escaping", slug: "docs/escaping" },
-                        { label: "Control Flow", slug: "docs/control-flow" },
-                        { label: "SVG And XML", slug: "docs/svg-and-xml" },
-                        { label: "Extensions", slug: "docs/extensions" },
-                        { label: "Static Analysis", slug: "docs/static-analysis" },
+                        {
+                            label: "Core Concepts",
+                            slug: "docs/core-concepts",
+                        },
+                        {
+                            label: "Writing Components",
+                            slug: "docs/writing-components",
+                        },
+                        {
+                            label: "Attributes And Content",
+                            slug: "docs/attributes-and-content",
+                        },
+                        {
+                            label: "Escaping",
+                            slug: "docs/escaping",
+                        },
+                        {
+                            label: "Control Flow",
+                            slug: "docs/control-flow",
+                        },
+                        {
+                            label: "SVG And XML",
+                            slug: "docs/svg-and-xml",
+                        },
+                        {
+                            label: "Static Analysis",
+                            slug: "docs/static-analysis",
+                        },
+                        {
+                            label: "Extensions",
+                            slug: "docs/extensions",
+                        },
                     ],
                 },
                 {
                     label: "Integrations",
                     items: [
-                        { label: "Overview", slug: "docs/integrations/overview" },
-                        { label: "Symfony", slug: "docs/integrations/symfony" },
-                        { label: "HTMX", slug: "docs/integrations/htmx" },
-                        { label: "Alpine.js", slug: "docs/integrations/alpinejs" },
+                        {
+                            label: "Overview",
+                            slug: "docs/integrations/overview",
+                        },
+                        {
+                            label: "Symfony",
+                            slug: "docs/integrations/symfony",
+                        },
+                        {
+                            label: "HTMX",
+                            slug: "docs/integrations/htmx",
+                        },
+                        {
+                            label: "Alpine.js",
+                            slug: "docs/integrations/alpinejs",
+                        },
                     ],
                 },
             ],
