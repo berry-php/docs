@@ -38,7 +38,11 @@ echo $page->toString();
 This renders something like:
 
 ```html
-<div class="prose"><h1>Hello Berry</h1><p>This was written in PHP.</p><a href="https://github.com/berry-php/html">Source code</a></div>
+<div class="prose">
+    <h1>Hello Berry</h1>
+    <p>This was written in PHP.</p>
+    <a href="https://github.com/berry-php/html">Source code</a>
+</div>
 ```
 
 The important part here is not the exact formatting. The important part is that the string was assembled through element builders instead of manual concatenation.

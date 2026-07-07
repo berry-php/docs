@@ -3,23 +3,23 @@ title: berry
 description: No more context-switching, just build your HTML templates in PHP.
 template: splash
 hero:
-  tagline: No more context-switching, just build your HTML templates in PHP.
-  image:
-    file: ../../assets/berry.svg
-  actions:
-    - text: Get Started
-      link: /docs/get-started/
-      icon: right-arrow
-    - text: GitHub
-      link: https://github.com/berry-php/html
-      icon: external
-      variant: minimal
-      attrs:
-        target: _blank
-        rel: noreferrer
+    tagline: No more context-switching, just build your HTML templates in PHP.
+    image:
+        file: ../../assets/berry.svg
+    actions:
+        - text: Get Started
+          link: /docs/get-started/
+          icon: right-arrow
+        - text: GitHub
+          link: https://github.com/berry-php/html
+          icon: external
+          variant: minimal
+          attrs:
+              target: _blank
+              rel: noreferrer
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid } from "@astrojs/starlight/components";
 
 Berry is a PHP library for composing correct HTML strings with small element builders.
 
@@ -57,18 +57,26 @@ echo div()
 
 <CardGrid stagger>
     <Card title="Get Started" icon="right-arrow" href="/docs/get-started/">
-        Install `berry/html` and render your first correct HTML string. [Start here](/docs/get-started/).
+        Install `berry/html` and render your first correct HTML string. [Start
+        here](/docs/get-started/).
     </Card>
     <Card title="Writing Components" icon="document" href="/docs/writing-components/">
-        Split your UI into plain PHP functions or component classes. [Write components](/docs/writing-components/).
+        Split your UI into plain PHP functions or component classes. [Write
+        components](/docs/writing-components/).
     </Card>
     <Card title="Extensions" icon="setting" href="/docs/extensions/">
-        Add your own fluent methods, just like the HTMX integration does. [Build extensions](/docs/extensions/).
+        Add your own fluent methods, just like the HTMX integration does. [Build
+        extensions](/docs/extensions/).
     </Card>
     <Card title="Static Analysis" icon="pencil" href="/docs/static-analysis/">
-        Keep more of your view code visible to <a href="https://phpstan.org/" target="_blank" rel="noreferrer">PHPStan</a> and your editor. [Use PHPStan](/docs/static-analysis/).
+        Keep more of your view code visible to{" "}
+        <a href="https://phpstan.org/" target="_blank" rel="noreferrer">
+            PHPStan
+        </a>{" "}
+        and your editor. [Use PHPStan](/docs/static-analysis/).
     </Card>
     <Card title="Integrations" icon="puzzle" href="/docs/integrations/overview/">
-        Use Berry with Symfony, HTMX, or your own application glue. [See integrations](/docs/integrations/overview/).
+        Use Berry with Symfony, HTMX, or your own application glue. [See
+        integrations](/docs/integrations/overview/).
     </Card>
 </CardGrid>

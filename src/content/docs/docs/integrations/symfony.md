@@ -238,4 +238,3 @@ The renderer supports the usual pieces:
 - buttons, checkboxes, radios, choices, and textareas
 
 The point is not to replace Symfony Form, but to render Symfony Form through Berry.
-

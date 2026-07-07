@@ -212,9 +212,7 @@ To have Composer load that file, add it to `autoload.files`:
 ```json
 {
     "autoload": {
-        "files": [
-            "src/bootstrap.php"
-        ]
+        "files": ["src/bootstrap.php"]
     }
 }
 ```
