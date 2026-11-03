@@ -129,7 +129,7 @@ final class CounterButton extends Component
     ) {
     }
 
-    protected function renderComponent(): Element
+    public function renderComponent(): Element
     {
         return button()
             ->class('btn')
@@ -161,7 +161,7 @@ final class Greeter extends Component
         return $this;
     }
 
-    protected function renderComponent(): Element
+    public function renderComponent(): Element
     {
         return p()->text($this->greeting . ' ' . $this->name);
     }

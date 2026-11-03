@@ -73,7 +73,23 @@ echo button()
     ->text('Save');
 ```
 
-Attribute names are also sanitized by default. They are lowercased and stripped of invalid characters.
+HTML attribute names are also sanitized by default. They are lowercased and stripped of invalid characters. SVG and XML preserve case and namespace prefixes instead.
+
+## JSON in script elements
+
+Use `script()->json()` to embed data for JavaScript to read:
+
+```php
+use function Berry\Html\script;
+
+echo script()
+    ->id('page-data')
+    ->json(['name' => 'Ada', 'count' => 3]);
+```
+
+This sets `type="application/json"` and encodes the data safely for an HTML script element, including values containing `</script>`. It throws `JsonException` if encoding fails.
+
+Read it in JavaScript with `JSON.parse(document.getElementById('page-data').textContent)`. Use this instead of putting JSON through `text()` or building a raw script string yourself.
 
 ## What Berry does not do
 

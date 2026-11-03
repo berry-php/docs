@@ -75,6 +75,18 @@ foreach ($posts as $post) {
 echo ul()->children($children);
 ```
 
+Iterators and generators work too, including a closure that yields children:
+
+```php
+echo ul()->children(function () use ($posts) {
+    foreach ($posts as $post) {
+        yield li()->text($post->title);
+    }
+}, else: fn () => li()->text('No posts yet.'));
+```
+
+Berry consumes the iterable once and renders each child immediately when you call `children()`. The `else` branch is used if the iterable has no entries.
+
 ## map
 
 `map()` lets you continue modifying an element in a callback.

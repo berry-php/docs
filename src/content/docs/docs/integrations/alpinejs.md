@@ -10,10 +10,10 @@ Without it, you can already write Alpine attributes with `attr()`.
 ```php
 div()
     ->attr('x-data', '{ count: 0 }')
-    ->children(
+    ->children([
         button()->attr('x-on:click', 'count++')->text('Increment'),
         span()->attr('x-text', 'count'),
-    );
+    ]);
 ```
 
 With the integration, this becomes nicer.
@@ -25,10 +25,10 @@ use function Berry\Html\span;
 
 echo div()
     ->xData(['count' => 0])
-    ->children(
+    ->children([
         button()->xOnClick('count++')->text('Increment'),
         span()->xText('count'),
-    );
+    ]);
 ```
 
 ## Install
@@ -119,10 +119,14 @@ input()->xModel('search');
 Use the Alpine display and control-flow directives as methods.
 
 ```php
+use function Berry\Html\template;
+
 div()->xShow('open')->text('Contents...');
-div()->xFor('item in items');
-div()->xIf('items.length > 0');
+template()->xFor('item in items')->child(span()->xText('item'));
+template()->xIf('items.length > 0')->child(div()->text('Items found.'));
 ```
+
+Alpine expects `x-for` and `x-if` on a `template()` with a single child element.
 
 ## Transitions
 
@@ -144,7 +148,7 @@ div()->xTransition(':enter', 'transition ease-out');
 Here is a typical Alpine style component.
 
 ```php
-use Berry\Html\Element;
+use Berry\Element;
 use function Berry\Html\button;
 use function Berry\Html\div;
 
@@ -152,7 +156,7 @@ function dropdown(): Element
 {
     return div()
         ->xData(['open' => false])
-        ->children(
+        ->children([
             button()
                 ->xOnClick('open = ! open')
                 ->text('Toggle'),
@@ -161,7 +165,7 @@ function dropdown(): Element
                 ->xOnClickOutside('open = false')
                 ->xTransition()
                 ->text('Contents...'),
-        );
+        ]);
 }
 ```
 

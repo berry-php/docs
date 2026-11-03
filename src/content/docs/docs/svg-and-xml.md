@@ -55,6 +55,8 @@ echo xmlRoot('rss')
 
 `xmlRoot()` prepends the XML declaration.
 
+SVG and XML preserve attribute names like `viewBox` and `xml:lang` and use XML escaping for text and attribute values. Invalid element or attribute names throw `InvalidArgumentException` rather than being silently changed.
+
 ## When this is useful
 
 SVG support is useful for inline icons or generated graphics.

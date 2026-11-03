@@ -59,7 +59,7 @@ final class BlogCard extends Component
     ) {
     }
 
-    protected function renderComponent(): Element
+    public function renderComponent(): Element
     {
         return article()
             ->class('blog-card')
@@ -113,7 +113,7 @@ final class Greeter extends Component
         return $this;
     }
 
-    protected function renderComponent(): Element
+    public function renderComponent(): Element
     {
         return p()
             ->class('greeting')

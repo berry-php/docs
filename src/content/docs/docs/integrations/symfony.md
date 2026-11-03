@@ -35,7 +35,7 @@ final class BlogPostTeaser extends AbstractComponent
     ) {
     }
 
-    protected function renderComponent(): Element
+    public function renderComponent(): Element
     {
         return article()
             ->class('post-teaser')
@@ -79,6 +79,8 @@ Inside `AbstractComponent`, you can use common Symfony services through helper m
 - `generateUrl()` for routes
 - `asset()` for assets
 - `trans()` for translations
+- `getLocale()` for the current translation locale
+- `getParameter()` for container parameters, like `app.site_name`
 - `getUser()` for the current user
 - `isGranted()` for security checks
 - `createCsrfToken()` for CSRF tokens
@@ -109,7 +111,7 @@ final class UserBadge extends AbstractComponent
     ) {
     }
 
-    protected function renderComponent(): Element
+    public function renderComponent(): Element
     {
         return p()
             ->class('user-badge')
@@ -129,6 +131,14 @@ The output is marked as safe HTML because Berry already rendered it.
 ## Constructor arguments
 
 Twig view components can receive normal arguments from Twig.
+
+Named arguments work too:
+
+```twig
+{{ user_badge(name: 'Ada') }}
+```
+
+Use the exact constructor parameter names. You can pass named arguments in any order and leave out parameters that have defaults.
 
 Object-typed constructor arguments can be resolved from Symfony's service locator, while scalar arguments come from the Twig call.
 
@@ -158,7 +168,7 @@ final class ContactForm extends AbstractForm
     ) {
     }
 
-    protected function renderComponent(): Element
+    public function renderComponent(): Element
     {
         return $this->renderForm($this->form);
     }
@@ -203,7 +213,7 @@ final class ContactForm extends AbstractForm
     ) {
     }
 
-    protected function renderComponent(): Element
+    public function renderComponent(): Element
     {
         return $this->formStart($this->form, [
             'attr' => ['class' => 'contact-form'],
@@ -238,3 +248,40 @@ The renderer supports the usual pieces:
 - buttons, checkboxes, radios, choices, and textareas
 
 The point is not to replace Symfony Form, but to render Symfony Form through Berry.
+
+## Custom error pages
+
+You can render Symfony's HTML error pages with a Berry component too.
+
+Extend `AbstractErrorPage`. It receives the exception as a `FlattenException`, available through `$this->exception`.
+
+```php
+<?php
+
+namespace App\View;
+
+use Berry\Element;
+use Berry\Symfony\ErrorRenderer\AbstractErrorPage;
+use function Berry\Html\{body, h1, head, html, p, title};
+
+final class ErrorPage extends AbstractErrorPage
+{
+    public function renderComponent(): Element
+    {
+        return html()
+            ->child(head()->child(title()->text('Something went wrong')))
+            ->child(body()
+                ->child(h1()->text('Error ' . $this->exception->getStatusCode()))
+                ->child(p()->text('Sorry, we could not complete your request.')));
+    }
+}
+```
+
+Then select the component in `config/packages/berry.yaml`:
+
+```yaml
+berry:
+    error_page: App\View\ErrorPage
+```
+
+Berry uses it when debug mode is off. In debug mode, Symfony keeps its usual exception page. Avoid showing exception messages or stack traces on your public error page.

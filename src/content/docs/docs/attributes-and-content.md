@@ -38,7 +38,7 @@ echo div()
     ->child(strong()->text('Important'));
 ```
 
-Use `children()` for many children.
+Use `children()` for many children. It accepts arrays, iterators, and generators.
 
 ```php
 use function Berry\Html\{li, ul};
@@ -50,6 +50,8 @@ echo ul()->children(array_map(
     $items,
 ));
 ```
+
+For an iterator example and an empty-list fallback, see [Control Flow](/docs/control-flow/#children).
 
 ## Attributes
 
